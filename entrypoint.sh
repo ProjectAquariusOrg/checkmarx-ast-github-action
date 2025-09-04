@@ -68,6 +68,11 @@ if [ -n "$scanId" ]; then
   echo "cxScanID=$scanId" >> $GITHUB_OUTPUT
 fi
 
+# CUSTOM: Export json report
+if [ -n "$scanId" ]; then
+  /app/bin/cx results show --scan-id "${scanId}" --report-format json
+fi
+
 if [ $exitCode -eq 0 ]
 then
   echo "Scan completed"
